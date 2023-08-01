@@ -1,0 +1,59 @@
+{
+  "homebrew_version": "4.0.24-9-gf0be2ca",
+  "used_options": [
+
+  ],
+  "unused_options": [
+
+  ],
+  "built_as_bottle": true,
+  "poured_from_bottle": true,
+  "loaded_from_api": false,
+  "installed_as_dependency": false,
+  "installed_on_request": true,
+  "changed_files": [
+    "lib/pkgconfig/libevent.pc",
+    "lib/pkgconfig/libevent_core.pc",
+    "lib/pkgconfig/libevent_extra.pc",
+    "lib/pkgconfig/libevent_openssl.pc",
+    "lib/pkgconfig/libevent_pthreads.pc"
+  ],
+  "time": 1690880803,
+  "source_modified_time": 1593950566,
+  "compiler": "clang",
+  "aliases": [
+
+  ],
+  "runtime_dependencies": [
+    {
+      "full_name": "ca-certificates",
+      "version": "2023-05-30",
+      "declared_directly": false
+    },
+    {
+      "full_name": "openssl@3",
+      "version": "3.1.1",
+      "declared_directly": true
+    }
+  ],
+  "source": {
+    "spec": "stable",
+    "versions": {
+      "stable": "2.1.12",
+      "head": null,
+      "version_scheme": 0
+    },
+    "path": "/opt/goinfre/janiecee/homebrew/Library/Taps/homebrew/homebrew-core/Formula/libevent.rb",
+    "tap_git_head": "f6c41e1c120eeb570cac1cc0f25b70d70eddc5ca",
+    "tap": "homebrew/core"
+  },
+  "arch": "x86_64",
+  "built_on": {
+    "os": "Macintosh",
+    "os_version": "macOS 11.7",
+    "cpu_family": "penryn",
+    "xcode": "13.2.1",
+    "clt": "13.2.0.0.1.1638488800",
+    "preferred_perl": "5.30"
+  }
+}
