@@ -6,6 +6,7 @@
 #include <sys/socket.h>  // Для создания сокетов, привязки и т.д.
 #include <unistd.h>
 
+#include <fstream>
 #include <iostream>
 #include <vector>
 
@@ -81,13 +82,17 @@ void read_callback(evutil_socket_t fd, short events, void* arg) {
 
       // Настройка логирования SQL запросов в файл
       std::ofstream logFile("queries.log");
-      if (logFile.is_open()) {
-        PQtrace(connection, logFile);
-      } else {
+      if (!logFile.is_open()) {
         std::cerr << "Failed to open log file." << std::endl;
         PQfinish(connection);
-        return 1;
       }
+
+      // Redirect stdout to the log file
+      std::streambuf* origStdout = std::cout.rdbuf();
+      std::cout.rdbuf(logFile.rdbuf());
+
+      // Enable tracing (stdout is redirected to the log file)
+      PQtrace(connection, stdout);
 
       // Ввод и выполнение SQL запросов
       while (true) {
@@ -132,7 +137,7 @@ evutil_socket_t create_new_connection() {
   sockaddr_in remote_addr{};
   remote_addr.sin_family = AF_INET;
   // remote_addr.sin_addr.s_addr = INADDR_ANY;
-  remote_addr.sin_port = htons(8000);
+  remote_addr.sin_port = htons(8080);
   inet_pton(AF_INET, "127.0.0.1", &(remote_addr.sin_addr));
 
   // Подключение к удаленному хосту
